@@ -1,24 +1,3 @@
-'''
-
-
-bajo peso 18.5
-peso normal 16.5-24.9
-sobrepeso 25.0-29.9
-obesidad grado 1 30.0-34.9
-obesidad 2 35.0-39.9
-obesidad 3 >40
-
-Capturar
-Nombre =
-peso =
-altura =
-IMC = (Peso/(altura)2)
-
-R = -Nombre + IMC + clasificación
-
-ls_Delgado.append(R)
-
-'''
 import os
 ls_bajo = []
 ls_normal = []
@@ -88,7 +67,7 @@ def fnt_consultar():
             print(f'Obesidad tipo 3: {ls_obesidad3}')
             input ('<ENTER>..')
         elif op == '2':
-            busqueda = input('<<< [📄]Busqueda por lista >>>\nEscoja la lista\n[1]Bajo peso\n[2]Peso normal\n[3]Sobrepeso\n[4]Obesidad tipo 1\n[5]Obesidad tipo 2\n[6]Obesidad tipo 3\n-->')
+            busqueda = input('<<< [📄]Busqueda por lista >>>\Seleccione la lista\n▶ [1] Bajo peso\n▶ [2] Peso normal\n▶ [3] Sobrepeso\n▶ [4]Obesidad tipo 1\n▶ [5] Obesidad tipo 2\n▶ [6] Obesidad tipo 3\n-->  ')
             if busqueda == '1':
                 print(f'Bajo peso: {ls_bajo}')
             elif busqueda == '2':
@@ -101,6 +80,9 @@ def fnt_consultar():
                 print(f'Obesidad tipo 2: {ls_obesidad2}')
             elif busqueda == '6':
                 print(f'Obesidad tipo 3: {ls_obesidad3}')
+            else:
+                print('ERROR: Seleccione un número valido')
+            input ('<ENTER>..')
         elif op == '3':
             nombre = input('<<< [📄]Busqueda por nombre >>>\nIngrese el nombre que busca: ')
             if nombre in ls_bajo:
@@ -115,17 +97,16 @@ def fnt_consultar():
                 print(f'Bajo peso: {ls_obesidad2}')
             elif nombre in ls_obesidad3:
                 print(f'Bajo peso: {ls_obesidad3}')
+            else:
+                input ('Nombre no encontrado <ENTER>..')
             
 sw = True
 while sw == True:
     fnt_limpiar()
     
-    op = int(input('[0]SALIR\n[1]REGISTRAR\n[2]CONSULTAR\n-->'))
+    op = int(input('<<< [💠] IMC CLASIFICATOR [💠] >>>\n\n▶ [0] SALIR\n▶ [1] REGISTRAR\n▶ [2] CONSULTAR\n--> '))
     if 0<= op <= 2:
         fnt_selector(op)
     else:
         input('❌ERROR: Por favor seleccione una opción valida <ENTER>..')
-        
     
-    
-        
