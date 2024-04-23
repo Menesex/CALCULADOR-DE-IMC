@@ -1,0 +1,131 @@
+'''
+
+
+bajo peso 18.5
+peso normal 16.5-24.9
+sobrepeso 25.0-29.9
+obesidad grado 1 30.0-34.9
+obesidad 2 35.0-39.9
+obesidad 3 >40
+
+Capturar
+Nombre =
+peso =
+altura =
+IMC = (Peso/(altura)2)
+
+R = -Nombre + IMC + clasificación
+
+ls_Delgado.append(R)
+
+'''
+import os
+ls_bajo = []
+ls_normal = []
+ls_sobrePeso = []
+ls_obesidad1 = []
+ls_obesidad2 = []
+ls_obesidad3 = []
+def fnt_limpiar():
+    os.system('cls')
+    print ('..................: [ IMC CALCULATOR ] :..................\n\nBy:\n-Menesex 😝\n\n')
+def fnt_selector(op):
+    global sw
+    if op ==0:
+        sw = False
+    elif op ==1:
+        fnt_registro()
+    elif op == 2:
+        fnt_consultar()
+def fnt_registro():
+    print('<<< [📒]MENÚ DE REGISTRO[📒] >>>')
+    Nombre = input('Ingrese su nombre: ')
+    peso = int(input('Ingrese su peso (KG): '))
+    altura = float(input('Ingrese su altura(M): '))
+    imc = (peso/(altura)**2)
+    #validar si hay datos vacio
+    imcStr = "{:.2f}".format(imc)
+    if imc < 18.5:
+        tipo = 'bajo peso'
+        R = (Nombre+'      '+imcStr+'      '+tipo)
+        ls_bajo.append(R)
+    elif  16.5 < imc < 24.9:
+        tipo = 'peso normal'
+        R = (Nombre+'      '+imcStr+'      '+tipo)
+        ls_normal.append(R)
+    elif 25 < imc < 29.9:
+        tipo = 'sobrepeso'
+        R = (Nombre+'      '+imcStr+'      '+tipo)
+        ls_sobrePeso.append(R)
+    elif 30 < imc < 34.9:
+        tipo = 'obesidad tipo 1'
+        R = (Nombre+'      '+imcStr+'      '+tipo)
+        ls_obesidad1.append(R)
+    elif 35 < imc < 39.9:
+        tipo = 'obesidad tipo 2'
+        R = (Nombre+'      '+imcStr+'      '+tipo)
+        ls_obesidad2.append(R)
+    elif imc > 40:
+        tipo = 'obesidad tipo 3'
+        R = (Nombre+'      '+imcStr+'      '+tipo)
+        ls_obesidad3.append(R)
+    input('Usuario registrado exitosamente <ENTER>.. ')    
+def fnt_consultar():
+    while True:
+        fnt_limpiar()
+        op = input('<<< [🔎]MENÚ DE CONSULTA[🔎] >>>\n[0]Salir\n[1]Consultar todo el listado\n[2]Consultar por lista\n[3]Consultar por nombre\n--> ')
+        
+        if op == '0':
+            break
+        elif op == '1':
+            global ls_bajo,ls_normal,ls_sobrePeso,ls_obesidad1,ls_obesidad2,ls_obesidad3
+            print('<<< [📄]TODO EL LISTADO >>>\n')
+            print(f'Bajo peso: {ls_bajo}')
+            print(f'Peso normal: {ls_normal}')
+            print(f'Sobrepeso: {ls_sobrePeso}')
+            print(f'Obesidad tipo 1: {ls_obesidad1}')
+            print(f'Obesidad tipo 2: {ls_obesidad2}')
+            print(f'Obesidad tipo 3: {ls_obesidad3}')
+            input ('<ENTER>..')
+        elif op == '2':
+            busqueda = input('<<< [📄]Busqueda por lista >>>\nEscoja la lista\n[1]Bajo peso\n[2]Peso normal\n[3]Sobrepeso\n[4]Obesidad tipo 1\n[5]Obesidad tipo 2\n[6]Obesidad tipo 3\n-->')
+            if busqueda == '1':
+                print(f'Bajo peso: {ls_bajo}')
+            elif busqueda == '2':
+                print(f'Peso normal: {ls_normal}')
+            elif busqueda == '3':
+                print(f'Sobrepeso: {ls_sobrePeso}')
+            elif busqueda == '4':
+                print(f'Obesidad tipo 1: {ls_obesidad1}')
+            elif busqueda == '5':
+                print(f'Obesidad tipo 2: {ls_obesidad2}')
+            elif busqueda == '6':
+                print(f'Obesidad tipo 3: {ls_obesidad3}')
+        elif op == '3':
+            nombre = input('<<< [📄]Busqueda por nombre >>>\nIngrese el nombre que busca: ')
+            if nombre in ls_bajo:
+                print(f'Bajo peso: {ls_bajo}')
+            elif nombre in ls_normal:
+                print(f'Bajo peso: {ls_normal}')
+            elif nombre in ls_sobrePeso:
+                print(f'Bajo peso: {ls_sobrePeso}')
+            elif nombre in ls_obesidad1:
+                print(f'Bajo peso: {ls_obesidad1}')
+            elif nombre in ls_obesidad2:
+                print(f'Bajo peso: {ls_obesidad2}')
+            elif nombre in ls_obesidad3:
+                print(f'Bajo peso: {ls_obesidad3}')
+            
+sw = True
+while sw == True:
+    fnt_limpiar()
+    
+    op = int(input('[0]SALIR\n[1]REGISTRAR\n[2]CONSULTAR\n-->'))
+    if 0<= op <= 2:
+        fnt_selector(op)
+    else:
+        input('❌ERROR: Por favor seleccione una opción valida <ENTER>..')
+        
+    
+    
+        
